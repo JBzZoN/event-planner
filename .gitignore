@@ -1,60 +1,52 @@
-# =========================
-# React
-# =========================
+# ==================================
+# Angular
+# ==================================
 
 frontend/node_modules/
-frontend/build/
 frontend/dist/
+frontend/.angular/
+frontend/coverage/
 
 frontend/.env
 frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
+
+# Angular cache
+.angular/cache/
 
 # Logs
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# IDE files
-frontend/.idea/
-frontend/.vscode/
-
-# =========================
-# Spring Boot
-# =========================
+# ==================================
+# Spring Boot (Maven)
+# ==================================
 
 backend/target/
+
+# ==================================
+# Spring Boot (Gradle)
+# ==================================
+
+backend/.gradle/
 backend/build/
 
-# Maven Wrapper JAR (optional)
-!.mvn/wrapper/maven-wrapper.jar
+# ==================================
+# Application Secrets
+# ==================================
 
-# Application secrets
 backend/src/main/resources/application-local.properties
 backend/src/main/resources/application-secret.properties
 
-# Logs
-backend/*.log
-backend/logs/
-
-# =========================
+# ==================================
 # Java
-# =========================
+# ==================================
 
 *.class
 
-# =========================
-# OS Files
-# =========================
-
-.DS_Store
-Thumbs.db
-
-# =========================
+# ==================================
 # IDE Files
-# =========================
+# ==================================
 
 .idea/
 .vscode/
@@ -69,9 +61,23 @@ Thumbs.db
 # NetBeans
 nbproject/private/
 
-# =========================
+# ==================================
+# OS Files
+# ==================================
+
+.DS_Store
+Thumbs.db
+
+# ==================================
+# Logs
+# ==================================
+
+*.log
+logs/
+
+# ==================================
 # Temporary Files
-# =========================
+# ==================================
 
 *.swp
 *.swo
