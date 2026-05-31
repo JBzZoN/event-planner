@@ -1,0 +1,16 @@
+#clicker {
+    width: 500px;
+    height: 500px;
+
+    border-radius: 250px;
+}
+
+#my-container {
+    display: flex; 
+    flex-direction: column;
+    width: 100%; 
+    height: 100vh; 
+
+    align-items: center;
+    justify-content: space-evenly;
+}
