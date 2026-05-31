@@ -1,0 +1,78 @@
+# =========================
+# React
+# =========================
+
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# IDE files
+frontend/.idea/
+frontend/.vscode/
+
+# =========================
+# Spring Boot
+# =========================
+
+backend/target/
+backend/build/
+
+# Maven Wrapper JAR (optional)
+!.mvn/wrapper/maven-wrapper.jar
+
+# Application secrets
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-secret.properties
+
+# Logs
+backend/*.log
+backend/logs/
+
+# =========================
+# Java
+# =========================
+
+*.class
+
+# =========================
+# OS Files
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE Files
+# =========================
+
+.idea/
+.vscode/
+
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/private/
+
+# =========================
+# Temporary Files
+# =========================
+
+*.swp
+*.swo
+*~
