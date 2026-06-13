@@ -1,1 +1,41 @@
-<p>home josh works!</p>
+<div id="whole">
+    <div
+    class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+    id="common"
+    >
+        <a
+            routerLink="/vendor/profile"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        >
+            <span class="fs-4">Vendor User</span>
+        </a>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+            <a routerLink="/vendor/profile" class="nav-link active" aria-current="page">
+                <img src="assets/profile.svg" class="icon"/>
+                Profile
+            </a>
+            </li>
+            <li>
+            <a routerLink="/vendor/package" class="nav-link text-white">
+                <img src="assets/package.svg" class="icon"/>
+                Packages
+            </a>
+            </li>
+        </ul>
+        <hr />
+        <ul class="nav nav-pills flex-column mb-0">
+            <li class="nav-item">
+                <a routerLink="/" class="nav-link text-white" aria-current="page">
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div id="children">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { VendorRoutingModule } from './vendor-routing.module';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PackageComponent } from './package/package.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    PackageComponent
   ],
   imports: [
     CommonModule,
