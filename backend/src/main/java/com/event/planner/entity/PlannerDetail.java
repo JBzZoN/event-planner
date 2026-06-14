@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Entity
+@Table(name = "planner_detail")
 @Data
 public class PlannerDetail {
 	@Id
@@ -28,4 +29,5 @@ public class PlannerDetail {
 
     @Column(name = "suspended_date")
     private LocalDate suspendedDate;
+
 }
