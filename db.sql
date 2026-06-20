@@ -46,8 +46,6 @@ CREATE TYPE verification_status AS ENUM (
     'REGISTERED'
 );
 
-
-
 CREATE TABLE planner_detail (
     org_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     org_name VARCHAR(100),

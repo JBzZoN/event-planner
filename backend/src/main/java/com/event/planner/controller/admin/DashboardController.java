@@ -1,4 +1,4 @@
-package com.event.planner.controller.AdminController;
+package com.event.planner.controller.admin;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

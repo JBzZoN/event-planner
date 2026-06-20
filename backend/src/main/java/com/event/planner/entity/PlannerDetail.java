@@ -1,9 +1,9 @@
 package com.event.planner.entity;
 
 import java.time.LocalDate;
-
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import com.event.planner.enums.PlannerStatus;
-
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import lombok.Data;
@@ -24,6 +24,7 @@ public class PlannerDetail {
     private String officeAddress;
 
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
     @Column(name = "status")
     private PlannerStatus status;
 

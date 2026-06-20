@@ -1,9 +1,9 @@
-package com.event.planner.service.AdminService;
+package com.event.planner.service.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.event.planner.ResponseDto.DashBoardDto;
 import com.event.planner.repository.PlannerDetailRepository;
+import com.event.planner.response.DashBoardDto;
 
 public class DashBoardServiceImpl implements DashBoardService{
 	@Autowired

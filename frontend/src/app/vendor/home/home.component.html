@@ -1,24 +1,24 @@
 <div id="whole">
     <div
-    class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
+    class="d-flex flex-column flex-shrink-0 p-3 text-bg-white"
     id="common"
     >
         <a
             routerLink="/vendor/profile"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+            class="d-flex align-items-center ms-4 mb-3 mb-md-0 me-md-auto text-dark text-decoration-none active-link"
         >
-            <span class="fs-4">Vendor User</span>
+            <span class="fs-4">{{vendorName}}</span>           
         </a>
         <hr />
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-            <a routerLink="/vendor/profile" class="nav-link active" aria-current="page">
+            <a routerLink="/vendor/profile" routerLinkActive="active-color" class="nav-link text-dark" aria-current="page">
                 <img src="assets/profile.svg" class="icon"/>
                 Profile
             </a>
             </li>
-            <li>
-            <a routerLink="/vendor/package" class="nav-link text-white">
+            <li class="nav-item">
+            <a routerLink="/vendor/package" routerLinkActive="active-color" class="nav-link text-dark">
                 <img src="assets/package.svg" class="icon"/>
                 Packages
             </a>
@@ -27,7 +27,8 @@
         <hr />
         <ul class="nav nav-pills flex-column mb-0">
             <li class="nav-item">
-                <a routerLink="/" class="nav-link text-white" aria-current="page">
+                <a routerLink="/" class="nav-link text-dark" aria-current="page">
+                    <img src="assets/log-out.svg" class="icon"/>
                     Logout
                 </a>
             </li>

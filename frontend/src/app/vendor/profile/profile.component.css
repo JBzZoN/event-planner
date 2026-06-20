@@ -1,5 +1,36 @@
 #profile {
     height: 100%;
     width: 100%;
-    background-color: rgb(210, 210, 210);
+    background-color: var(--background-grey);
+
+    padding-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+}
+
+.data-box {
+    background-color: white;
+    border-radius: 20px;
+
+    padding: 20px;
+}
+
+
+
+.message-button {
+    background-color: var(--pink-color);
+    color: white;
+    border-radius: 20px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+}
+
+#edit-image {
+    height: 35px;
+    width: 35px;
 }

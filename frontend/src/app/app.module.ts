@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './shared/login/login.component';
+import { CommonComponent } from './shared/common/common.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CommonComponent
   ],
   imports: [
     BrowserModule,

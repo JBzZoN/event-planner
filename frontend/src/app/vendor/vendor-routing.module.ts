@@ -7,7 +7,7 @@ import { PackageComponent } from './package/package.component';
 const routes: Routes = [
   {path:"", component: HomeComponent, children: [
     {path: "profile", component: ProfileComponent},
-    {path: "package", component: PackageComponent}
+    {path: "package", component: PackageComponent},
   ]}
 ];
 
