@@ -1,0 +1,1 @@
+docker run -it --rm -e PGPASSWORD='6wVdtO45b43mpGUVcMkwS3SsvRuODoCF' postgres:18 psql -h dpg-d8mf227lk1mc738k0edg-a.singapore-postgres.render.com -p 5432 -U event_user -d event_planner_7w1q

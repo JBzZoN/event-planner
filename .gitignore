@@ -13,6 +13,14 @@ frontend/.env.local
 # Angular cache
 .angular/cache/
 
+#TypeScript demos
+TypeScriptLearning
+TypeScriptLearning/node_modules
+
+#AngularLearning
+AngularLearning
+AngularLearning/angular-learning-App/node_modules
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

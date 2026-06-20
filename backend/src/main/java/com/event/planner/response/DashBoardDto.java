@@ -1,4 +1,4 @@
-package com.event.planner.ResponseDto;
+package com.event.planner.response;
 
 
 public class DashBoardDto {
