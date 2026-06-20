@@ -2,11 +2,9 @@ package com.event.planner.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.event.planner.entity.PlannerDetail;
+import com.event.planner.entity.Package;
 
 @Repository
-public interface PlannerDetailRepository extends JpaRepository<PlannerDetail, Integer> {
+public interface PackageRepository extends JpaRepository<Package, Integer>{
 	
 }
-	
