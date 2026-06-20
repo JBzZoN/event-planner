@@ -184,3 +184,17 @@ CREATE TABLE vendor_verification (
         FOREIGN KEY (org_id)
         REFERENCES planner_detail(org_id)
 );
+
+CREATE TABLE booking (
+    booking_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INT NOT NULL,
+    package_id INT NOT NULL,
+    booking_amount DECIMAL(10,2) NOT NULL,
+    booking_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user
+        FOREIGN KEY (user_id)
+        REFERENCES user_detail(user_id),
+    CONSTRAINT fk_package 
+        FOREIGN KEY (package_id)
+            REFERENCES package(package_id)
+);

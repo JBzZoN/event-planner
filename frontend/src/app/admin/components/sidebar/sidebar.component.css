@@ -1,0 +1,41 @@
+.sidebar {
+    width: 260px !important;
+    height: 100vh;
+
+    background: #d63384 !important;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    color: white;
+}
+
+.menubar .menu {
+    color: white !important;
+
+    background: rgba(255,255,255,0.15);
+
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+
+    padding: 12px 15px;
+}
+
+.menubar .menu:hover {
+    background: rgba(255,255,255,0.30);
+}
+
+.menubar .menu.active {
+    background: white !important;
+    color: #d63384 !important;
+}
+
+.fs-4 {
+    font-weight: 700;
+}
+
+.dropdown-toggle {
+    color: white !important;
+}
