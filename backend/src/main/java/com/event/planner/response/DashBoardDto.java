@@ -1,14 +1,17 @@
 package com.event.planner.response;
 
+import java.math.BigDecimal;
 
+import lombok.Data;
+@Data
 public class DashBoardDto {
 	private long totalVendors;
 	private long totalUsers;
 	private long totalPackages;
 	private long pendingReports;
-	private long totalRevenue;
+	private BigDecimal totalRevenue;
 	public DashBoardDto(long totalVendors, long totalUsers, long totalPackages, long pendingReports,
-			long totalRevenue) {
+			BigDecimal totalRevenue) {
 		super();
 		this.totalVendors = totalVendors;
 		this.totalUsers = totalUsers;

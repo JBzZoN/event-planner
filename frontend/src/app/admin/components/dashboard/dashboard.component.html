@@ -1,37 +1,45 @@
-<div class="dashboard-container">
+<div id="dashboard-container" *ngIf="dashboard; else loader">
 
-    <div class="dashboard-header">
+    <div id="dashboard-header">
         <h1>Admin Dashboard</h1>
         <p>Platform monitoring and statistics overview</p>
     </div>
 
-    <div class="stats-cards">
+    <div id = "card-container">
 
         <div class="card">
             <p>Total Revenue</p>
-            <h3>₹12.4L</h3>
+            <h3>₹ {{dashboard.totalRevenue}}</h3>
         </div>
 
         <div class="card">
             <p>Total Vendors</p>
-            <h3>248</h3>
+            <h3>{{dashboard.totalVendors}}</h3>
         </div>
 
         <div class="card">
             <p>Total Users</p>
-            <h3>1240</h3>
+            <h3>{{dashboard.totalUsers}}</h3>
         </div>
 
         <div class="card">
             <p>Total Packages</p>
-            <h3>530</h3>
+            <h3>{{dashboard.totalPackages}}</h3>
         </div>
 
         <div class="card">
             <p>Pending Reports</p>
-            <h3>12</h3>
+            <h3>{{dashboard.pendingReports}}</h3>
         </div>
 
     </div>
 
 </div>
+
+<ng-template #loader>
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center" style="background-color: var(--background-grey);">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

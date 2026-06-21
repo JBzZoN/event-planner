@@ -36,10 +36,9 @@ public class DashBoardServiceImpl implements DashBoardService{
 		long totalPackages = packageCount.count();
 		long pendingReport = reports.countByStatus(ReportStatus.UNDER_REVIEW);
 		BigDecimal totalRevenue = booking.getTotalRevenue();
-		System.out.println(totalVendors+" "+pendingReport);
-		System.out.println(totalUsers+" "+totalPackages);
-		System.out.println(totalRevenue);
-		return null;
+//		System.out.printf(totalVendors+" "+totalUsers+" "+ totalPackages+" "+ pendingReport);
+//		System.out.print(totalRevenue);	
+		return new DashBoardDto(totalVendors, totalUsers, totalPackages, pendingReport, totalRevenue);
 	}
 	
 	
