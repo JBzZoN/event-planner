@@ -1,17 +1,14 @@
-.sidebar {
+#sidebar {
     width: 260px !important;
     height: 100vh;
-
     background: #d63384 !important;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-
     color: white;
 }
+#template{
+    display: flex;
+}
 
-.menubar .menu {
+#menubar .menu {
     color: white !important;
 
     background: rgba(255,255,255,0.15);
@@ -23,19 +20,30 @@
     padding: 12px 15px;
 }
 
-.menubar .menu:hover {
+#menubar .menu:hover {
     background: rgba(255,255,255,0.30);
 }
 
-.menubar .menu.active {
+#menubar .menu.active {
     background: white !important;
     color: #d63384 !important;
 }
 
-.fs-4 {
-    font-weight: 700;
+#title {
+    font-size: 30px;    font-weight: 700;
+    color:white
 }
 
-.dropdown-toggle {
-    color: white !important;
+#logout {
+    background: white !important;
+    color: #d63384 !important;
+}
+
+#children{
+    flex: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* padding-top: 35px; */
+    background-color: #f4f4f4;
+    /* color: #d63384; */
 }
