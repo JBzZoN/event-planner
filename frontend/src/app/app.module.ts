@@ -13,7 +13,7 @@ import { CommonComponent } from './shared/common/common.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    CommonComponent
+    CommonComponent,
   ],
   imports: [
     BrowserModule,

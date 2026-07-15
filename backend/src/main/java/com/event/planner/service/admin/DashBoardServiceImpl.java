@@ -12,7 +12,10 @@ import com.event.planner.repository.ReportsRepository;
 import com.event.planner.repository.UserDetailRepository;
 import com.event.planner.response.DashBoardDto;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class DashBoardServiceImpl implements DashBoardService{
 	@Autowired
 	private PlannerDetailRepository plannerDetails;

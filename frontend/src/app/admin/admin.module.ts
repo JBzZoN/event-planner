@@ -8,6 +8,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardService } from './service/dashboard.service';
 import { HttpClientModule } from '@angular/common/http';
+import { VendorVerificationService } from './service/vendor-verification.service';
+import { VendorVerificationComponent } from './components/vendor-verification/vendor-verification.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,15 +18,18 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     DragonComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    VendorVerificationComponent,
   ],
   imports: [
     HttpClientModule,
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
   ],
   providers: [
-    DashboardService
+    DashboardService,
+    VendorVerificationService
   ]
 })
 export class AdminModule { }

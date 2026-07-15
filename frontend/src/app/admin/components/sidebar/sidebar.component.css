@@ -24,7 +24,7 @@
     background: rgba(255,255,255,0.30);
 }
 
-#menubar .menu.active {
+#menubar .menu:click {
     background: white !important;
     color: #d63384 !important;
 }
