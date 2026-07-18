@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.event.planner.entity.PlannerDetail;
 import com.event.planner.entity.VendorVerification;
+import com.event.planner.enums.PlannerStatus;
 import com.event.planner.enums.VerificationStatus;
 import com.event.planner.repository.VendorVerificationRepository;
 import com.event.planner.request.UpdateStatus;
@@ -56,7 +58,8 @@ public class VendorVerificationServiceImpl implements VendorVerificationService 
 	            vendors.findById(status.getVerificationId())
 	                   .orElseThrow(() ->
 	                       new RuntimeException("Vendor verification not found"));
-
+	    PlannerDetail planner = vendor.getPlanner();
+	    if(status.getStatus().equals(VerificationStatus.APPROVED))planner.setStatus(PlannerStatus.ACTIVE);
 	    vendor.setRemarks(status.getRemarks());
 	    if(status.getStatus().equals(VerificationStatus.APPROVED))vendor.setVerifiedDate(LocalDateTime.now());
 	    vendor.setStatus(status.getStatus());
