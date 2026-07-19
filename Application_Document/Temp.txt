@@ -7,6 +7,8 @@ psql \
 -U event_planner_gg50_user \
 -d event_planner_gg50
 
+
+
 psql -h dpg-d9bfar6rnols73ektusg-a.oregon-postgres.render.com -p 5432 -U event_planner_gg50_user -d event_planner_gg50
 
 

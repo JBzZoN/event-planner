@@ -4,11 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VendorVerificationComponent } from './components/vendor-verification/vendor-verification.component';
+import { VendorManagementComponent } from './components/vendor-management/vendor-management.component';
 const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "", component: SidebarComponent, children:[
     {path: "dashboard", component: DashboardComponent},
-    {path : "verification", component: VendorVerificationComponent}
+    {path : "verification", component: VendorVerificationComponent},
+    {path : "management", component: VendorManagementComponent}
   ]}
 ];
 

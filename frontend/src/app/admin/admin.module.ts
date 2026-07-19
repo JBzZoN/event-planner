@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { VendorVerificationService } from './service/vendor-verification.service';
 import { VendorVerificationComponent } from './components/vendor-verification/vendor-verification.component';
 import { FormsModule } from '@angular/forms';
+import { VendorManagementComponent } from './components/vendor-management/vendor-management.component';
+import { VendorManagementService } from './service/vendor-management.service';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     DashboardComponent,
     VendorVerificationComponent,
+    VendorManagementComponent,
   ],
   imports: [
     HttpClientModule,
@@ -29,7 +32,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     DashboardService,
-    VendorVerificationService
+    VendorVerificationService,
+    VendorManagementService
   ]
 })
 export class AdminModule { }

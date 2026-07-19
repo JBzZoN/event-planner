@@ -6,6 +6,21 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     margin-top: 35px;
 }
+.verification-header {
+    margin-top: 30px;
+}
+
+.verification-header h1 {
+    font-size: 2em;
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 0.5px;
+}
+
+.verification-header p {
+    font-size: 1.1rem;
+    color: #555;
+}
 .section.blur{
     filter: blur(2.5px);
     opacity: 7;
