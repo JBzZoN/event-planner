@@ -1,0 +1,119 @@
+<div id="dashboard-container" >
+
+    <div id="dashboard-header">
+        <h1>Vendor Management</h1>
+        <p>View and manage vendors</p>
+    </div>
+
+    <div id = "card-container">
+
+        <div class="card">
+            <p>Total Vendors</p>
+            <h3>{{vendorPage.stats.totalVendors}}</h3>
+        </div>
+
+        <div class="card">
+            <p>Active Vendors</p>
+            <h3>{{vendorPage.stats.activeVendors}}</h3>
+        </div>
+
+        <div class="card">
+            <p>Inactive Vendors</p>
+            <h3>{{vendorPage.stats.inactiveVendors}}</h3>
+        </div>
+
+        <div class="card">
+            <p>Suspended Vendors</p>
+            <h3>{{vendorPage.stats.suspendedVendors}}</h3>
+        </div>
+    </div>
+    <div id = "management-container" >
+            <div class="section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Organization</th>
+                            <th>Office Address</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let v of vendorPage.vendorList" [id] = "v.orgId">
+                            <td>{{v.orgName}}</td>
+                            <td>{{v.officeAddress}}</td>
+                            <td>{{v.status}}</td>
+                            <td><button class="action-btns">Review Application</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class = "review-overlay" *ngIf="application">
+                <div class="review-card">
+
+                    <button class="close-btn" (click)="application = null">
+                        <img src="../../../../assets/wrong.png" alt="Close">
+                    </button>
+
+                    <h2>Vendor Verification</h2>
+
+                    <div class="divider"></div>
+
+                    <div class="details-grid">
+
+                        <div class="detail-item">
+                            <label>Organization : </label>
+                            <span>{{application.orgName}}</span>
+                        </div>
+
+                        <div class="detail-item">
+                            <label>Registration Date : </label>
+                            <span>{{application.registrationDate}}</span>
+                        </div>
+
+                        <div class="detail-item full-width">
+                            <label>Office Address : </label>
+                            <span>{{application.officeAddress}}</span>
+                        </div>
+
+                        <div class="detail-item full-width">
+                            <label>GST Certificate : </label>
+                            <a [href]="application.gstRegistrationCertificate"
+                            target="_blank">
+                                View GST Certificate
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="remarks-section">
+                        <input type="text" [(ngModel)] = "remarks">
+                    </div>
+
+                    <div class="action-btns">
+
+                        <button class="approve-btn"
+                                (click)="updateApplicationStatus(verificationStatus.APPROVED)">
+                            {{ updatingStatus == 'APPROVED' ? 'Updating...' : 'Approve' }}
+                        </button>
+                        <button class="reject-btn"
+                            (click)="updateApplicationStatus(verificationStatus.REJECTED)">
+                            {{ updatingStatus == 'REJECTED'? 'Updating...' : 'Reject' }}
+                        </button>
+
+
+                    </div>
+
+                </div>
+            </div> -->
+        </div>
+
+</div>
+
+<ng-template #loader>
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center" style="background-color: var(--background-grey);">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>
