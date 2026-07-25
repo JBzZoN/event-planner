@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.event.planner.controller.exception.ResourceNotFoundException;
 import com.event.planner.dto.GroupDto;
 import com.event.planner.dto.ItemDto;
 import com.event.planner.dto.PackageDto;
@@ -15,10 +16,12 @@ import com.event.planner.entity.Package;
 import com.event.planner.entity.PackageGroup;
 import com.event.planner.entity.PackageGroupItem;
 import com.event.planner.entity.PlannerDetail;
+import com.event.planner.enums.PlannerStatus;
 import com.event.planner.repository.PackageGroupItemRepository;
 import com.event.planner.repository.PackageGroupRepository;
 import com.event.planner.repository.PackageRepository;
 import com.event.planner.repository.PlannerDetailRepository;
+import com.event.planner.request.UpdateVendorStatusRequest;
 import com.event.planner.response.VendorManagementResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -69,6 +72,18 @@ public class VendorManagementServiceImpl implements VendorManagementService{
 	private ItemDto mapPackageGroupItem(PackageGroupItem item) {
 		ItemDto dto = modelMapper.map(item, ItemDto.class);
 		return dto;
+	}
+	@Override
+	public void updateVendorStatus(UpdateVendorStatusRequest req) {
+		
+		PlannerDetail vendor = planner.findById(req.getOrgId()).orElseThrow(()-> new ResourceNotFoundException("Vendor not found for the Organization Id "+req.getOrgId()));
+		vendor.setStatus(req.getStatus());
+		if (req.getStatus() == PlannerStatus.SUSPENDED) {
+		    vendor.setSuspendedDate(req.getSuspendUntil());
+		} else {
+		    vendor.setSuspendedDate(null);
+		}
+		planner.save(vendor);
 	}
 
 }

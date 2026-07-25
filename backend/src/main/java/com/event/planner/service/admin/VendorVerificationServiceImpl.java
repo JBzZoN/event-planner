@@ -60,6 +60,7 @@ public class VendorVerificationServiceImpl implements VendorVerificationService 
 	                       new RuntimeException("Vendor verification not found"));
 	    PlannerDetail planner = vendor.getPlanner();
 	    if(status.getStatus().equals(VerificationStatus.APPROVED))planner.setStatus(PlannerStatus.ACTIVE);
+	    else if(status.getStatus().equals(VerificationStatus.REJECTED)) planner.setStatus(PlannerStatus.INACTIVE);
 	    vendor.setRemarks(status.getRemarks());
 	    if(status.getStatus().equals(VerificationStatus.APPROVED))vendor.setVerifiedDate(LocalDateTime.now());
 	    vendor.setStatus(status.getStatus());
