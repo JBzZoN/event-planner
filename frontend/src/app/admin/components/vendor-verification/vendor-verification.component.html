@@ -1,0 +1,97 @@
+<div>
+    <div class = "verification-header">
+        <h1>Vendor Verification</h1>
+        <p>Verify vendors, contacts and verification status</p>
+    </div>
+    <div id = "verification-container" *ngIf="vendor; else loader">
+        <div class="section" [class.blur] = "application">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Organization</th>
+                        <th>Office Address</th>
+                        <th>Registerd On</th>
+                        <th>GST Certificate</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let v of vendor" [id] = "v.verificationId">
+                        <td>{{v.orgName}}</td>
+                        <td>{{v.officeAddress}}</td>
+                        <td>{{v.registrationDate}}</td>
+                        <td>{{v.gstRegistrationCertificate}}</td>
+                        <td><button (click)="reviewApplication(v)">Review Application</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class = "review-overlay" *ngIf="application">
+            <div class="review-card">
+
+                <button class="close-btn" (click)="application = null">
+                    <img src="../../../../assets/wrong.png" alt="Close">
+                </button>
+
+                <h2>Vendor Verification</h2>
+
+                <div class="divider"></div>
+
+                <div class="details-grid">
+
+                    <div class="detail-item">
+                        <label>Organization : </label>
+                        <span>{{application.orgName}}</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <label>Registration Date : </label>
+                        <span>{{application.registrationDate}}</span>
+                    </div>
+
+                    <div class="detail-item full-width">
+                        <label>Office Address : </label>
+                        <span>{{application.officeAddress}}</span>
+                    </div>
+
+                    <div class="detail-item full-width">
+                        <label>GST Certificate : </label>
+                        <a [href]="application.gstRegistrationCertificate"
+                        target="_blank">
+                            View GST Certificate
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="remarks-section">
+                    <input type="text" [(ngModel)] = "remarks">
+                </div>
+
+                <div class="action-btns">
+
+                    <button class="approve-btn"
+                            (click)="updateApplicationStatus(verificationStatus.APPROVED)">
+                        {{ updatingStatus == 'APPROVED' ? 'Updating...' : 'Approve' }}
+                    </button>
+                    <button class="reject-btn"
+                        (click)="updateApplicationStatus(verificationStatus.REJECTED)">
+                        {{ updatingStatus == 'REJECTED'? 'Updating...' : 'Reject' }}
+                    </button>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #loader>
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center" style="background-color: var(--background-grey);">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

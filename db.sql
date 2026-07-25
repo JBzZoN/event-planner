@@ -43,7 +43,7 @@ CREATE TYPE report_status AS ENUM (
 CREATE TYPE verification_status AS ENUM (
     'PENDING',
     'APPROVED',
-    'REGISTERED'
+    'REJECTED'
 );
 
 CREATE TABLE planner_detail (
@@ -174,11 +174,18 @@ CREATE TABLE reports (
 
 CREATE TABLE vendor_verification (
     verification_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+
     org_id INT NOT NULL UNIQUE,
-    status verification_status,
+
+    status verification_status NOT NULL DEFAULT 'PENDING',
+
+    registration_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    verified_date TIMESTAMP,
+
     remarks TEXT,
-    gst_registration_certificate VARCHAR(100),
-    verified_date DATE,
+
+    gst_registration_certificate VARCHAR(255),
 
     CONSTRAINT fk_verification_org
         FOREIGN KEY (org_id)
