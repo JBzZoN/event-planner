@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { VendorService } from '../vendor.service';
+import { Vendor } from '../models/vendor';
 
 @Component({
   selector: 'app-home',
@@ -17,12 +18,12 @@ export class HomeComponent implements OnInit {
 
     // CHANGE THIS
     localStorage.clear()
-    localStorage.setItem("vendor", "1");
+    localStorage.setItem("vendor", "2");
     
     // THIS IS ONLY DURING DEVELOPMENT
-    this.service.getVendorDetail(localStorage.getItem("vendor")).subscribe((value: any) => {
+    this.service.getVendorDetail(localStorage.getItem("vendor")).subscribe((value: Vendor) => {
       this.vendorName = value.orgName;
-    })
+    })  
   }
   
 }

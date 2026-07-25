@@ -8,13 +8,15 @@ import { PackageComponent } from './package/package.component';
 import {HttpClientModule} from '@angular/common/http'
 import { VendorService } from './vendor.service';
 import { FormsModule } from '@angular/forms';
+import { NewPackageComponent } from './new-package/new-package.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     ProfileComponent,
-    PackageComponent
+    PackageComponent,
+    NewPackageComponent
   ],
   imports: [
     CommonModule,

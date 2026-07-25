@@ -1,14 +1,17 @@
 #children {
     flex:1;
+    overflow-y: auto;
 }
 
 #whole {
     display: flex;
+    height: 100vh;
 }
 
 #common {
     width: 280px; 
     height: 100vh;
+    overflow: hidden;
 }
 
 .icon {

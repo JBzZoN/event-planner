@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VendorService } from '../vendor.service';
 import { Router } from '@angular/router';
 import { Vendor } from '../models/vendor';
+import { UserDetail } from '../models/user-detail';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +16,7 @@ export class ProfileComponent implements OnInit {
 
   readMode: boolean = true;
   vendor!: Vendor;
+  userDetails!: UserDetail[];
 
   buttonMessage!: String;
   statusMessage!: String;
@@ -46,6 +48,11 @@ export class ProfileComponent implements OnInit {
             break;
         }
       }
+    });
+
+    this.service.getContactsOfOrg(localStorage.getItem("vendor")).subscribe(response => {
+      this.userDetails = response;
+      console.log(this.userDetails);
     });
   }
 

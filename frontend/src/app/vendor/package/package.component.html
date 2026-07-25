@@ -1,3 +1,105 @@
-<div id="package">
-    <h1>PACKAGE</h1>
+<div id="packages" *ngIf="packageData; else loader">
+    <div class="w-100  container mb-5 mt-4">
+        <button class="w-100 message-button mb-3" (click)="newPackage()">+ Add a new package</button>
+
+        <div
+            class="data-box mb-3"
+            *ngFor="let pkg of packageData">
+
+            <!-- Package Header -->
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>{{ pkg.packageName }}</h2>
+
+                <div class="price-tag">
+                    ₹{{ pkg.packagePrice | number }}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row g-3 mt-3">
+                <!-- Groups -->
+                <div
+                    class="data-box container mb-3">
+
+                    <div
+                        class="accordion"
+                        [id]="'packageAccordion' + pkg.packageId">
+
+                        <div
+                            class="accordion-item"
+                            *ngFor="let group of pkg.packageGroup; let i = index">
+
+                            <h2 class="accordion-header">
+
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    [attr.data-bs-target]="'#group' + pkg.packageId + i">
+
+                                    <span style="width:100%">
+                                        {{ group.groupName }}
+                                    </span>
+
+                                    <span
+                                        style="text-align:end;width:100%;margin-right:30px">
+
+                                        {{ group.packageGroupItem.length }}
+                                        Items
+
+                                    </span>
+
+                                </button>
+
+                            </h2>
+
+                            <div
+                                [id]="'group' + pkg.packageId + i"
+                                class="accordion-collapse collapse"
+                                [attr.data-bs-parent]="'#packageAccordion' + pkg.packageId">
+
+                                <div class="accordion-body">
+
+                                    <div
+                                        class="package-item"
+                                        *ngFor="let item of group.packageGroupItem">
+
+                                        <div>
+                                            <div class="item-name">
+                                                {{ item.itemName }}
+                                            </div>
+                                        </div>
+
+                                        <div class="item-price">
+                                            ₹{{ item.itemPrice | number }}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<ng-template #loader>
+    <div
+        class="d-flex w-100 h-100 justify-content-center align-items-center"
+        style="background-color: var(--background-grey);">
+
+        <div class="spinner-border text-danger">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+
+    </div>
+</ng-template>
