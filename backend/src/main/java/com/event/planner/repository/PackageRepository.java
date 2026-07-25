@@ -9,6 +9,6 @@ import com.event.planner.entity.PlannerDetail;
 
 @Repository
 public interface PackageRepository extends JpaRepository<Package, Integer>{
-	
+	public List<Package> findByPlannerDetailOrgId(Integer orgId);
 	List<Package> findByPlannerDetail(PlannerDetail plannerDetail);
 }

@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './shared/login/login.component';
 import { CommonComponent } from './shared/common/common.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,12 @@ import { CommonComponent } from './shared/common/common.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-top-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

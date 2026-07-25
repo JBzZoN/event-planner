@@ -1,0 +1,131 @@
+<div id="package-page" class="w-100">
+
+    <!-- Package Details -->
+    <div class="data-box container mb-3">
+
+        <h2 class="mb-4">Add Package</h2>
+
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="packageName"
+                        placeholder="Package Name"
+                        [(ngModel)]="newPackageToPost.packageName"
+                        >
+                    <label for="packageName">Package Name</label>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="packagePrice"
+                        placeholder="Package Price"
+                        [(ngModel)]="newPackageToPost.packagePrice"
+                        [disabled]="true"
+                        >
+                    <label for="packagePrice">Package Price</label>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Package Group -->
+    <div class="w-100" *ngFor="let group of newPackageToPost.packageGroup; let i = index">
+        <div class="data-box container mb-3">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4 class="mb-0">Package Group</h4>
+
+                <button class="btn btn-outline-danger" (click)="removeGroup(i)">
+                    Remove Group
+                </button>
+
+            </div>
+
+            <div class="form-floating mb-4">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="groupName"
+                    placeholder="Group Name"
+                    [(ngModel)]="newPackageToPost.packageGroup[i].groupName">
+                <label for="groupName">Group Name</label>
+            </div>
+
+            <h5 class="mb-3">Items</h5>
+
+            <!-- Item -->
+            <div class="w-100" *ngFor="let item of newPackageToPost.packageGroup[i].packageGroupItem; let j = index">
+                <div class="item-card mt-3">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-7">
+                            <div class="form-floating">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="itemName1"
+                                    placeholder="Item Name"
+                                    [(ngModel)]="newPackageToPost.packageGroup[i].packageGroupItem[j].itemName"
+                                    >
+                                <label for="itemName1">Item Name</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    id="itemPrice1"
+                                    placeholder="Item Price"
+                                    [(ngModel)]="newPackageToPost.packageGroup[i].packageGroupItem[j].itemPrice"
+                                    (change)="updateTotalPrice()"
+                                    >
+                                <label for="itemPrice1">Price</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-1 d-flex align-items-center">
+                            <button class="btn btn-outline-danger" style="width: 100%; height: 100%;" (click)="removeItem(i, j)">
+                                ✕
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="btn add-button mt-2 w-100" (click)="addItem(i)">
+                + Add Item
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Add Group -->
+    <div class="data-box container mb-3 mt-4">
+
+        <button class="btn add-button w-100" (click)="addNewPackageGroup()">
+            + Add Package Group
+        </button>
+
+        <button class="save-button w-100 mt-3" (click)="savePackage()">
+            Save Package
+        </button>
+
+    </div>
+
+</div>
