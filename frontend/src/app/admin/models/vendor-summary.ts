@@ -4,5 +4,6 @@ export interface VendorSummary {
     orgId: number;
 	orgName: string;
 	officeAddress: string;
-	status: PlannerStatus
+	status: PlannerStatus;
+	suspendUntil : Date
 }
