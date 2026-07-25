@@ -1,0 +1,12 @@
+package com.event.planner.dto;
+
+import java.math.BigDecimal;
+
+import lombok.Data;
+
+@Data
+public class ItemDto {
+	private Long itemId;
+	private String itemName;
+	private BigDecimal itemPrice;
+}

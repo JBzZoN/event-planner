@@ -12,7 +12,10 @@ import com.event.planner.repository.ReportsRepository;
 import com.event.planner.repository.UserDetailRepository;
 import com.event.planner.response.DashBoardDto;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class DashBoardServiceImpl implements DashBoardService{
 	@Autowired
 	private PlannerDetailRepository plannerDetails;
@@ -36,10 +39,9 @@ public class DashBoardServiceImpl implements DashBoardService{
 		long totalPackages = packageCount.count();
 		long pendingReport = reports.countByStatus(ReportStatus.UNDER_REVIEW);
 		BigDecimal totalRevenue = booking.getTotalRevenue();
-		System.out.println(totalVendors+" "+pendingReport);
-		System.out.println(totalUsers+" "+totalPackages);
-		System.out.println(totalRevenue);
-		return null;
+//		System.out.printf(totalVendors+" "+totalUsers+" "+ totalPackages+" "+ pendingReport);
+//		System.out.print(totalRevenue);	
+		return new DashBoardDto(totalVendors, totalUsers, totalPackages, pendingReport, totalRevenue);
 	}
 	
 	
