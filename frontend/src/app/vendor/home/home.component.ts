@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
     // CHANGE THIS
     localStorage.clear()
-    localStorage.setItem("vendor", "2");
+    localStorage.setItem("vendor", "3");
     
     // THIS IS ONLY DURING DEVELOPMENT
     this.service.getVendorDetail(localStorage.getItem("vendor")).subscribe((value: Vendor) => {

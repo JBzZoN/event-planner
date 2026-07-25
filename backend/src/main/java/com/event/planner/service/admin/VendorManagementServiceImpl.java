@@ -51,7 +51,7 @@ public class VendorManagementServiceImpl implements VendorManagementService{
 	
 	private  PackageDto mapPackage(Package pack){
 		PackageDto dto = modelMapper.map(pack, PackageDto.class);
-		List<GroupDto> groups = groupRepo.findByPack(pack).stream()
+		List<GroupDto> groups = groupRepo.findByPackageEntity(pack).stream()
 								.map(this::mapPackageGroup).toList();
 		dto.setGroups(groups);
 		return dto;

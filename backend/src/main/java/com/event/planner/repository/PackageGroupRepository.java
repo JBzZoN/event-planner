@@ -10,6 +10,6 @@ import com.event.planner.entity.PackageGroup;
 
 @Repository
 public interface PackageGroupRepository extends JpaRepository<PackageGroup, Integer>{
-	List<PackageGroup> findByPack(Package pack);
+	List<PackageGroup> findByPackageEntity(Package packageEntity);
 }
 	
