@@ -1,3 +1,10 @@
+CREATE USER event_planner WITH PASSWORD 'event_planner';
+ALTER USER event_planner WITH SUPERUSER;
+
+CREATE DATABASE event_planner OWNER event_planner;
+
+\c event_planner
+
 CREATE TYPE planner_status AS ENUM (
     'PENDING_VERIFICATION',
     'ACTIVE',

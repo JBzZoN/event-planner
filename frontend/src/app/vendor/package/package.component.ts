@@ -19,9 +19,13 @@ export class PackageComponent implements OnInit {
   constructor(private vendorService: VendorService, private toaster: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
-      this.vendorService.getPackageDetail(localStorage.getItem("vendor")).subscribe((res: VendorPackage[]) => {
-        this.packageData = res;
-      });
+    this.loadPackages()
+  }
+
+  loadPackages() {
+    this.vendorService.getPackageDetail(localStorage.getItem("vendor")).subscribe((res: VendorPackage[]) => {
+      this.packageData = res;
+    });
   }
 
   newPackage() {
@@ -42,8 +46,9 @@ export class PackageComponent implements OnInit {
   }
 
   doDeletionP() {
-    this.vendorService.deletePackage(this.selectedId).subscribe();
-
-    this.deletePopup = true;
+    this.vendorService.deletePackage(this.selectedId).subscribe(() => {
+        this.deletePopup = true;
+        this.loadPackages();
+    });
   }
 }
