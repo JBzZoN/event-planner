@@ -13,9 +13,12 @@
                 
 
                 <div class="d-flex">
-                    <button class="btn btn-success me-4">
+                    <div class="delete-btn me-3" (click)="deletePackage(pkg.packageId)">
+                        Delete
+                    </div>
+                    <div class="edit-btn me-3" (click)="editPackage(pkg.packageId)">
                         Edit
-                    </button>
+                    </div>
                     <div class="price-tag">₹{{ pkg.packagePrice | number }}</div>
                 </div>
             </div>
@@ -94,6 +97,34 @@
             </div>
 
         </div>
+    </div>
+</div>
+
+<div class="delete-overlay" [hidden]="deletePopup">
+    <div class="delete-popup shadow-lg">
+
+        <div class="popup-icon">
+            <img src="./../../../assets/trash.png" height="50%"/>
+        </div>
+
+        <h4 class="fw-bold mb-2">Delete Package?</h4>
+
+        <p class="text-muted mb-4">
+            Are you sure you want to delete this package?
+            <br>
+            This action cannot be undone.
+        </p>
+
+        <div class="d-flex justify-content-end gap-2">
+            <button class="btn btn-light px-4" (click)="cancelDeletionP()">
+                Cancel
+            </button>
+
+            <button class="btn btn-danger px-4" (click)="doDeletionP()">
+                Delete
+            </button>
+        </div>
+
     </div>
 </div>
 

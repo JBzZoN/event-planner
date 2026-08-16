@@ -69,5 +69,9 @@ public class VendorService {
 
 		packageRepository.save(userPackage);
 	}
+
+	public void deletePackageById(Integer id) {
+		packageRepository.deleteById(id);
+	}
 	
 }
