@@ -1,0 +1,11 @@
+docker command for keycloak server:
+docker run -d -p 127.0.0.1:8081:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.7.1 start-dev
+
+creds: admin/admin
+
+create client named: angular-frontend
+with: client auth OFF, standard flow ON, direct access grant ON, PKCE ON with SHA256, rest default settings.
+
+create 3 roles VENDOR, ADMIN and USER.
+
+create users and you can assign roles to them.
