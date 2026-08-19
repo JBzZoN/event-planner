@@ -12,6 +12,10 @@ export class VendorService {
 
   constructor(private client: HttpClient) { }
 
+  deletePackage(id: (string|null)) {
+    return this.client.delete(this.baseUrl + "/package/" + id);
+  }
+
   getVendorDetail(id: (string|null)) : Observable<Vendor> {
     return this.client.get<Vendor>(this.baseUrl + "/details/" + id);
   }

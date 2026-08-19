@@ -14,13 +14,13 @@ import lombok.Data;
 public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer bookinId;
+	private Integer bookingId;
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private UserDetail user;
 	@ManyToOne
 	@JoinColumn(name = "package_id")
-	private Package packageDetail;
+	private Package packageEntity;
 	private BigDecimal bookingAmount;
 	private LocalDateTime bookingDate;
 }
