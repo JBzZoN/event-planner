@@ -1,0 +1,9 @@
+How to use Keycloak
+
+1. docker command for keycloak server:
+docker run -d -p 127.0.0.1:8081:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.7.1 start-dev
+
+2. creds: admin/admin
+
+3. use the keycloak.json and import it to the keycloak to get the realm data i created.
+you will get the client and roles i created.

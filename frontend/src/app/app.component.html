@@ -1,1 +1,3 @@
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!gettingStarted()"></router-outlet>
+
+<app-getting-started *ngIf="gettingStarted()"></app-getting-started>
