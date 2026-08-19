@@ -12,15 +12,43 @@ import { Router } from '@angular/router';
 export class PackageComponent implements OnInit {
   packageData!: VendorPackage[];
 
+  deletePopup: boolean = true;
+
+  selectedId!: any;
+
   constructor(private vendorService: VendorService, private toaster: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
-      this.vendorService.getPackageDetail(localStorage.getItem("vendor")).subscribe((res: VendorPackage[]) => {
-        this.packageData = res;
-      });
+    this.loadPackages()
+  }
+
+  loadPackages() {
+    this.vendorService.getPackageDetail(localStorage.getItem("vendor")).subscribe((res: VendorPackage[]) => {
+      this.packageData = res;
+    });
   }
 
   newPackage() {
     this.router.navigate(["vendor", "package", "new"])
+  }
+
+  deletePackage(id: any) {
+    this.selectedId = id;
+    this.deletePopup = false;
+  }
+
+  editPackage(id: any) {
+    this.selectedId = id;
+  }
+
+  cancelDeletionP() {
+    this.deletePopup = true;
+  }
+
+  doDeletionP() {
+    this.vendorService.deletePackage(this.selectedId).subscribe(() => {
+        this.deletePopup = true;
+        this.loadPackages();
+    });
   }
 }
