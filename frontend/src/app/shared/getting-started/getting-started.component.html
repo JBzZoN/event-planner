@@ -76,114 +76,117 @@
 
             <form>
 
-                <!-- Organisation Details -->
-                <div class="text-start mb-3">
+            <!-- Organisation Details -->
+            <div class="text-start mb-3">
                 <h6 class="fw-bold" style="color: var(--text-color);">
                     Organisation Details
                 </h6>
                 <hr>
-                </div>
+            </div>
 
-                <div class="row g-3">
+            <div class="row g-3">
 
                 <!-- Organisation Name -->
                 <div class="col-md-6">
                     <div class="form-floating">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="organisationName"
-                        name="organisationName"
-                        placeholder="Organisation Name">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="organisationName"
+                            name="organisationName"
+                            placeholder="Organisation Name"
+                            [(ngModel)]="vendorDetails.organisationName">
 
-                    <label for="organisationName">
-                        Organisation Name
-                    </label>
+                        <label for="organisationName">
+                            Organisation Name
+                        </label>
                     </div>
                 </div>
 
                 <!-- Phone -->
                 <div class="col-md-6">
                     <div class="form-floating">
-                    <input
-                        type="tel"
-                        class="form-control"
-                        id="phone"
-                        name="phone"
-                        placeholder="Phone Number">
+                        <input
+                            type="tel"
+                            class="form-control"
+                            id="phone"
+                            name="phone"
+                            placeholder="Phone Number"
+                            [(ngModel)]="vendorDetails.phone">
 
-                    <label for="phone">
-                        Phone Number
-                    </label>
+                        <label for="phone">
+                            Phone Number
+                        </label>
                     </div>
                 </div>
 
                 <!-- Office Address -->
                 <div class="col-12">
                     <div class="form-floating">
-                    <textarea
-                        class="form-control"
-                        id="officeAddress"
-                        name="officeAddress"
-                        placeholder="Office Address"
-                        style="height: 100px"></textarea>
+                        <textarea
+                            class="form-control"
+                            id="officeAddress"
+                            name="officeAddress"
+                            placeholder="Office Address"
+                            style="height: 100px"
+                            [(ngModel)]="vendorDetails.officeAddress"></textarea>
 
-                    <label for="officeAddress">
-                        Office Address
-                    </label>
+                        <label for="officeAddress">
+                            Office Address
+                        </label>
                     </div>
                 </div>
 
-                </div>
+            </div>
 
-
-                <!-- Personal Details -->
-                <div class="text-start mt-4 mb-3">
+            <!-- Personal Details -->
+            <div class="text-start mt-4 mb-3">
                 <h6 class="fw-bold" style="color: var(--text-color);">
                     Personal Details
                 </h6>
                 <hr>
-                </div>
+            </div>
 
-                <div class="row g-3">
+            <div class="row g-3">
 
                 <!-- Name -->
                 <div class="col-12">
                     <div class="form-floating">
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        name="name"
-                        placeholder="Full Name">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            placeholder="Full Name"
+                            [(ngModel)]="vendorDetails.name">
 
-                    <label for="name">
-                        Full Name
-                    </label>
+                        <label for="name">
+                            Full Name
+                        </label>
                     </div>
                 </div>
 
                 <!-- Personal Address -->
                 <div class="col-12">
                     <div class="form-floating">
-                    <textarea
-                        class="form-control"
-                        id="personalAddress"
-                        name="personalAddress"
-                        placeholder="Personal Address"
-                        style="height: 100px"></textarea>
+                        <textarea
+                            class="form-control"
+                            id="personalAddress"
+                            name="personalAddress"
+                            placeholder="Personal Address"
+                            style="height: 100px"
+                            [(ngModel)]="vendorDetails.personalAddress"></textarea>
 
-                    <label for="personalAddress">
-                        Personal Address
-                    </label>
+                        <label for="personalAddress">
+                            Personal Address
+                        </label>
                     </div>
                 </div>
 
-                </div>
+            </div>
 
-
-                <!-- Buttons -->
-                <div class="d-flex justify-content-end gap-2 mt-4">
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-2 mt-4">
 
                 <button
                     type="button"
@@ -199,13 +202,15 @@
                     background-color: var(--pink-color);
                     border-color: var(--pink-color);
                     color: white;
-                    ">
+                    "
+                    (click)="onVendorSubmit()"
+                    >
                     Continue
                 </button>
 
-                </div>
+            </div>
 
-            </form>
+        </form>
         </div>
         <div class="card-body text-center" *ngIf="userSelected" style="width: 100%;">
 

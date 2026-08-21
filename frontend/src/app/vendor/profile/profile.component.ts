@@ -22,8 +22,9 @@ export class ProfileComponent implements OnInit {
   statusMessage!: String;
 
   ngOnInit(): void {
-    this.service.getVendorDetail(localStorage.getItem("vendor")).subscribe(response => {
+    this.service.getVendorDetail().subscribe(response => {
       this.vendor = response;
+      console.log(this.vendor)
 
       if (this.vendor) {
         switch (this.vendor.status) {
@@ -48,11 +49,11 @@ export class ProfileComponent implements OnInit {
             break;
         }
       }
-    });
 
-    this.service.getContactsOfOrg(localStorage.getItem("vendor")).subscribe(response => {
-      this.userDetails = response;
-      console.log(this.userDetails);
+      this.service.getContactsOfOrg(String(this.vendor.orgId)).subscribe(response => {
+        this.userDetails = response;
+        console.log(this.userDetails);
+      });
     });
   }
 

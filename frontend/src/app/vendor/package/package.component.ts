@@ -23,7 +23,7 @@ export class PackageComponent implements OnInit {
   }
 
   loadPackages() {
-    this.vendorService.getPackageDetail(localStorage.getItem("vendor")).subscribe((res: VendorPackage[]) => {
+    this.vendorService.getPackageDetail().subscribe((res: VendorPackage[]) => {
       this.packageData = res;
     });
   }

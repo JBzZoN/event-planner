@@ -16,7 +16,6 @@ public interface PlannerDetailRepository extends JpaRepository<PlannerDetail, In
 		        COUNT(CASE WHEN status = 'SUSPENDED' THEN 1 END)
 		    FROM planner_detail
 		    """, nativeQuery = true)
-		Object countAllStatus();
-	
+		Object countAllStatus();		
 }
 	

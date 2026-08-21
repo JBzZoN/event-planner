@@ -10,6 +10,8 @@ import { AuthConfigModule } from './auth/auth-config.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'angular-auth-oidc-client';
 import { GettingStartedComponent } from './shared/getting-started/getting-started.component';
+import { VendorService } from './vendor/vendor.service';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { GettingStartedComponent } from './shared/getting-started/getting-starte
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    VendorService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })

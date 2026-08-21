@@ -49,7 +49,7 @@ export class NewPackageComponent {
   }
 
   savePackage() {
-    this.vendorService.createPackage(localStorage.getItem("vendor"), this.newPackageToPost).subscribe((response) => {
+    this.vendorService.createPackage(this.newPackageToPost).subscribe((response) => {
       this.router.navigate(["vendor", "package"])
     })
   }

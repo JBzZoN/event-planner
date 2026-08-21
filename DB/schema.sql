@@ -1,3 +1,14 @@
+-- Connect as postgres user to execute these
+
+-- Disconnect everyone from the database
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE datname = 'event_planner'
+  AND pid <> pg_backend_pid();
+
+DROP DATABASE IF EXISTS event_planner;
+DROP ROLE IF EXISTS event_planner;
+
 CREATE USER event_planner WITH PASSWORD 'event_planner';
 ALTER USER event_planner WITH SUPERUSER;
 
@@ -69,8 +80,6 @@ CREATE TABLE user_detail (
     name VARCHAR(100),
     phone VARCHAR(20),
     address VARCHAR(255),
-    username VARCHAR(50),
-    password VARCHAR(100),
     role user_role,
     email_address VARCHAR(100),
 

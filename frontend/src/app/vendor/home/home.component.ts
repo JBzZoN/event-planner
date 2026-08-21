@@ -15,13 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // CHANGE THIS
-    localStorage.clear()
-    localStorage.setItem("vendor", "1");
-    
-    // THIS IS ONLY DURING DEVELOPMENT
-    this.service.getVendorDetail(localStorage.getItem("vendor")).subscribe((value: Vendor) => {
+    this.service.getVendorDetail().subscribe((value: Vendor) => {
       this.vendorName = value.orgName;
     })  
   }
