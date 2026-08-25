@@ -44,10 +44,14 @@
     </div>
     <button 
     class="mt-3 w-100 container message-button mb-3" 
+    (click)="onClickVerification()"
     >{{buttonMessage}}</button>
 
     <div class="data-box container mb-3 pb-4">
-        <h2 class="mb-3">Contacts</h2>
+        <div class="d-flex justify-content-between w-100">
+            <h2 class="mb-3">Contacts</h2>
+            <img src="assets/add.png" id="edit-image" (click)="addContacts()"/>
+        </div>
         <div class="accordion" id="contactsAccordion">
 
         <div class="accordion-item" *ngFor="let contact of userDetails; let i = index">
@@ -113,3 +117,206 @@
         </div>
     </div>
 </ng-template>
+
+<!-- Add Contact Popup -->
+<div
+    [hidden]="!showContactPopup"
+    class="position-fixed top-0 start-0 w-100 h-100"
+    style="background-color: rgba(0, 0, 0, 0.5); z-index: 1050;">
+
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+
+        <div class="bg-white rounded shadow p-4" style="width: 450px;">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="mb-0">Add Contact</h4>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    (click)="cancelContact()">
+                </button>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input
+                    type="Name"
+                    class="form-control"
+                    id="contactName"
+                    placeholder="Name"
+                    [(ngModel)]="newContactDetail.name">
+
+                <label for="contactName">
+                    Name
+                </label>
+            </div>
+
+            <!-- Email -->
+            <div class="form-floating mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    id="contactEmail"
+                    placeholder="Email"
+                    [(ngModel)]="newContactDetail.emailAddress">
+
+                <label for="contactEmail">
+                    Email
+                </label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password"
+                    [(ngModel)]="newContactDetail.password">
+
+                <label for="password">
+                    Password
+                </label>
+            </div>
+
+            <!-- Address -->
+            <div class="form-floating mb-3">
+                <textarea
+                    class="form-control"
+                    id="contactAddress"
+                    placeholder="Address"
+                    style="height: 100px"
+                    [(ngModel)]="newContactDetail.address">
+                </textarea>
+
+                <label for="contactAddress">
+                    Address
+                </label>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-floating mb-4">
+                <input
+                    type="tel"
+                    class="form-control"
+                    id="contactPhone"
+                    placeholder="Phone Number"
+                    [(ngModel)]="newContactDetail.phone">
+
+                <label for="contactPhone">
+                    Phone Number
+                </label>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-2">
+
+                <button
+                    type="button"
+                    class="btn btn-outline-secondary px-4"
+                    (click)="cancelContact()">
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="btn px-4"
+                    style="
+                        background-color: var(--pink-color);
+                        border-color: var(--pink-color);
+                        color: white;
+                    "
+                    (click)="submitContact()">
+                    Submit
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- GST Verification Popup -->
+<div
+    [hidden]="!showVerificationPopup"
+    class="position-fixed top-0 start-0 w-100 h-100"
+    style="background-color: rgba(0, 0, 0, 0.5); z-index: 1060;">
+
+    <div class="d-flex justify-content-center align-items-center w-100 h-100">
+
+        <div class="bg-white rounded shadow p-4" style="width: 450px;">
+
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <h4 class="mb-0">
+                    GST Verification
+                </h4>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    (click)="showVerificationPopup = false">
+                </button>
+
+            </div>
+
+            <hr>
+
+            <!-- Description -->
+            <p class="text-muted mb-4">
+                Upload your GST registration certificate to verify your organisation.
+            </p>
+
+            <!-- PDF Upload -->
+            <div class="mb-4">
+
+                <label
+                    for="gstCertificate"
+                    class="form-label fw-semibold">
+                    GST Registration Certificate
+                </label>
+
+                <input
+                    type="file"
+                    class="form-control"
+                    id="gstCertificate"
+                    accept="application/pdf"
+                    (change)="onGstCertificateSelected($event)">
+
+                <div class="form-text">
+                    Only PDF files are allowed.
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-end gap-2">
+
+                <button
+                    type="button"
+                    class="btn btn-outline-secondary px-4"
+                    (click)="showVerificationPopup = false">
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="btn px-4"
+                    style="
+                        background-color: var(--pink-color);
+                        border-color: var(--pink-color);
+                        color: white;
+                    "
+                    (click)="submitVerification()">
+                    Submit
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

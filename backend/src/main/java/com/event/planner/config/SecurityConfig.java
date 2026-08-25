@@ -30,6 +30,7 @@ public class SecurityConfig {
         	.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/vendor/**").hasAuthority("VENDOR")
+                .requestMatchers("/gst/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2ResourceServer(oauth2 -> oauth2

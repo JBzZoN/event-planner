@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { VendorPackage } from '../models/vendor-package';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -9,9 +9,22 @@ import { VendorService } from './../vendor.service';
   templateUrl: './new-package.component.html',
   styleUrls: ['./new-package.component.css']
 })
-export class NewPackageComponent {
+export class NewPackageComponent implements OnInit {
 
   constructor(private toaster: ToastrService, private router: Router, private vendorService: VendorService) {}
+  ngOnInit(): void {
+
+    if(history.state.packageData) {
+      this.addPackage.set(false);
+      this.newPackageToPost = history.state.packageData;
+      console.log(this.newPackageToPost)
+    }else {
+      this.addPackage.set(true);
+    }
+
+  }
+
+  addPackage = signal(true);
 
   newPackageToPost: VendorPackage = {
     packageId: null,
@@ -49,9 +62,16 @@ export class NewPackageComponent {
   }
 
   savePackage() {
-    this.vendorService.createPackage(this.newPackageToPost).subscribe((response) => {
-      this.router.navigate(["vendor", "package"])
-    })
+    if(this.addPackage()) {
+      this.vendorService.createPackage(this.newPackageToPost).subscribe((response) => {
+        this.router.navigate(["vendor", "package"])
+      })
+    }else { // edit
+      this.vendorService.editPackage(this.newPackageToPost).subscribe((response) => {
+        this.router.navigate(["vendor", "package"])
+      })
+    }
+
   }
 
   removeGroup(id: number) {

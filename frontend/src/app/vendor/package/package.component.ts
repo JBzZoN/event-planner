@@ -39,6 +39,12 @@ export class PackageComponent implements OnInit {
 
   editPackage(id: any) {
     this.selectedId = id;
+    this.router.navigate(["vendor", "package", "new"], {
+      "state" : {
+        "packageData": this.packageData.filter(pkg => pkg.packageId === id)[0],
+        "packageId": id
+      }
+    })
   }
 
   cancelDeletionP() {

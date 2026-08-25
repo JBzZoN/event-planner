@@ -3,6 +3,7 @@ import { VendorService } from '../vendor.service';
 import { Router } from '@angular/router';
 import { Vendor } from '../models/vendor';
 import { UserDetail } from '../models/user-detail';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ import { UserDetail } from '../models/user-detail';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private service: VendorService) {
+  constructor(private service: VendorService, private toast: ToastrService) {
   }
 
   readMode: boolean = true;
@@ -20,11 +21,26 @@ export class ProfileComponent implements OnInit {
 
   buttonMessage!: String;
   statusMessage!: String;
+  showContactPopup: boolean = false;
+
+  newContactDetail: UserDetail = {
+    emailAddress: "",
+    address: "",
+    name:"",
+    password:"",
+    phone:"",
+    userId: -1,
+    username: "",
+    userRole: "VENDOR"
+  };
 
   ngOnInit(): void {
+    this.updatePageDetails()
+  }
+
+  updatePageDetails() {
     this.service.getVendorDetail().subscribe(response => {
       this.vendor = response;
-      console.log(this.vendor)
 
       if (this.vendor) {
         switch (this.vendor.status) {
@@ -52,9 +68,14 @@ export class ProfileComponent implements OnInit {
 
       this.service.getContactsOfOrg(String(this.vendor.orgId)).subscribe(response => {
         this.userDetails = response;
-        console.log(this.userDetails);
       });
     });
+  }
+
+  onClickVerification() {
+    if(this.vendor.status == 'INACTIVE') {
+      this.showVerificationPopup = true;
+    }
   }
 
 
@@ -67,9 +88,44 @@ export class ProfileComponent implements OnInit {
     this.service.updateVendorDetail(this.vendor.orgId.toString(), this.vendor);
   }
 
+  addContacts() {
+    this.showContactPopup = true;
+  }
+
+  cancelContact() {
+    this.showContactPopup = false;
+  }
+
+  submitContact() {
+    this.service.addContactToVendor(this.vendor.orgId.toString(), this.newContactDetail).subscribe(() => {
+      this.showContactPopup = false;
+      this.service.getContactsOfOrg(String(this.vendor.orgId)).subscribe(response => {
+        this.userDetails = response;
+      });
+    });
+  }
+
   cancelMajorDetails() {
     this.readMode = true;
     this.service.updateVendorDetail(this.vendor.orgId.toString(), this.vendor);
   }
 
+  showVerificationPopup: boolean = false;
+
+  gstCertificate!: File;
+
+  onGstCertificateSelected(event: any) {
+      this.gstCertificate = event.target.files[0];
+  }
+
+  submitVerification() {
+    if(this.gstCertificate) {
+      this.service.sendForVerification(this.gstCertificate, this.vendor.orgId).subscribe(() => {
+        this.updatePageDetails()
+        this.showVerificationPopup=false;
+      });
+    }else {
+      this.toast.warning("No PDF selected")
+    }
+  }
 }

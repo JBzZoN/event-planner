@@ -17,6 +17,13 @@ export class VendorService {
     return this.client.delete(this.baseUrl + "/package/" + id);
   }
 
+  sendForVerification(gstCertificate: File, orgId: number) {
+    const formData = new FormData();
+    formData.append('file', gstCertificate);
+    formData.append('orgId', orgId.toString());
+    return this.client.post(this.baseUrl + "/verification", formData);;
+  }
+
   getVendorDetail() : Observable<Vendor> {
     return this.client.get<Vendor>(this.baseUrl + "/details");
   }
@@ -32,9 +39,20 @@ export class VendorService {
   updateVendorDetail(id: (string|null), vendor: Vendor) {
     this.client.patch(this.baseUrl + "/details/" + id, vendor).subscribe();
   }
+  
+  addContactToVendor(orgId: (string|null), newContactDetail: UserDetail) {
+    return this.client.post("http://localhost:8080/vendor/contact", {
+      ...newContactDetail,
+      orgId
+    });
+  }
 
   createPackage(pkg: VendorPackage) {
     return this.client.post(this.baseUrl + "/package", pkg);
+  }
+
+  editPackage(pkg: VendorPackage) {
+    return this.client.put(this.baseUrl + "/package", pkg);
   }
 
   registerVendor(vendorDetails: VendorDetails) {
