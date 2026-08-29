@@ -1,5 +1,8 @@
 package com.event.planner.entity;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import com.event.planner.enums.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,14 +36,9 @@ public class UserDetail {
     @Column(name = "address")
     private String address;
     
-    @Column(name = "username")
-    private String username;
-    
-    @Column(name = "password")
-    private String password;
-    
-    @Column(name = "role")
     @Enumerated(EnumType.STRING)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "role", columnDefinition = "user_role")
     private UserRole userRole;
     
     @Column(name = "email_address")

@@ -33,8 +33,6 @@ INSERT INTO user_detail (
     name,
     phone,
     address,
-    username,
-    password,
     role,
     email_address
 )
@@ -46,8 +44,6 @@ VALUES
     'Josh Thomas',
     '9876543210',
     'Kochi, Kerala',
-    'josh',
-    NULL,
     'VENDOR',
     'josh@example.com'
 ),
@@ -58,8 +54,6 @@ VALUES
     'Rahul Menon',
     '9876543211',
     'Aluva, Kerala',
-    'rahul',
-    NULL,
     'USER',
     'rahul@example.com'
 );
@@ -319,7 +313,7 @@ VALUES
     (
         SELECT user_id
         FROM user_detail
-        WHERE username = 'rahul'
+        WHERE email_address = 'rahul@example.com'
     ),
     (
         SELECT package_id

@@ -23,7 +23,7 @@ export class PackageComponent implements OnInit {
   }
 
   loadPackages() {
-    this.vendorService.getPackageDetail(localStorage.getItem("vendor")).subscribe((res: VendorPackage[]) => {
+    this.vendorService.getPackageDetail().subscribe((res: VendorPackage[]) => {
       this.packageData = res;
     });
   }
@@ -39,6 +39,12 @@ export class PackageComponent implements OnInit {
 
   editPackage(id: any) {
     this.selectedId = id;
+    this.router.navigate(["vendor", "package", "new"], {
+      "state" : {
+        "packageData": this.packageData.filter(pkg => pkg.packageId === id)[0],
+        "packageId": id
+      }
+    })
   }
 
   cancelDeletionP() {

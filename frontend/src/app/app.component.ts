@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,7 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 export class AppComponent implements OnInit{
   title = 'frontend';
 
-  gettingStarted = signal(false);
-
-  constructor(public oidcSecurityService: OidcSecurityService, public router: Router) {}
+  constructor(public oidcSecurityService: OidcSecurityService, public router: Router, public appService: AppService) {}
 
   ngOnInit() {
     this.oidcSecurityService
@@ -36,7 +35,7 @@ export class AppComponent implements OnInit{
             } else if(roles.includes('USER')) {
               this.router.navigate(['user', 'home']);
             } else {
-              this.gettingStarted.set(true);
+              this.appService.gettingStarted.set(true);
             }
           });
         }
